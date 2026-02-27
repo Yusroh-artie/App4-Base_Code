@@ -17,11 +17,11 @@ Timothy Riedel
 triedel@utexas.edu
  
 Brief Description of Goal of Code:
-blah, blah, blah,
- 
+TO help user identify if throat pain is a bacterial Strep throat or Viral Sore throat 
 Known Issues:
-blah, blah, blah, blah
-Ignore this error message if you see it using the javaScript console: Error with Permissions-Policy header: Origin trial controlled feature not enabled: 'interest-cohort'.
+The app does not currently account for symptoms that are common to both conditions, 
+such as a mild cough or fatigue, which may result in a "50/50" probability result
+that is inconclusive for the userIgnore this error message if you see it using the javaScript console: Error with Permissions-Policy header: Origin trial controlled feature not enabled: 'interest-cohort'.
 
 References:
 https://www.w3schools.com/w3css/default.asp
@@ -38,8 +38,28 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
 <script>
 
-	//YOUR JAVASCRIPT GOES HERE
-
+// The initial variables start at zero. They act as counters to track how many user responses align with each condition
+     var strepthroat_count = 0; 
+     var Sorethroat_count = 0;
+// When a user clicks a button indicating an Strepthroat symptom. It increases the strepthroat_count variable by one.
+     function StrepthroatAdd() {
+        strepthroat_count = strepthroat_count + 1;
+// This is called for Viral Sorethroat symptoms, adding one to the Sorethroat_count.
+     function SorethroatAdd() {
+        Sorethroat_count = Sorethroat_count + 1;
+    }
+// This function calculates the final diagnostic probabilities. It uses the 'innerHTML' property to update the results page
+      function getResults() {
+// We divide by 6 because we have 6 questions.
+        var totalQuestions = 6;
+        var total = strepthroat_count + Sorethroat_count;
+// Calculate percentages
+        var StrepthroatPercent = (strepthroat_count / 6) * 100;
+        var SorethroatPercent = (Sorethroat_count / 6) * 100;
+// Display the results using (+)  to combine the text with the calculated variables. <br> creates a line break.
+      resultText.innerHTML = "Probability it is Bacterial Strepthroat = " + StrepthroatPercent + "%" + 
+                            "<br> Probability it is a Viral Sorethroat = " + SorethroatPercent + "%";
+}
 </script>	
 
 
@@ -67,9 +87,115 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 </style>
 
 <body>
-	
-	<!-- HERE IS WHERE ALL OF YOUR HTML PAGES GO -->
-	REPLACE THIS TEXT
-	
-</body>
-</html>
+ <!-- Header section: Displays the main title of the webpage ("Strepthroat or Sorethroat?") using W3.CSS styling (w3-container and w3-flat-carrot for layout and color). -->
+
+    <div id="header" class="w3-container w3-flat-carrot">
+        <h1>StrepThroat or SoreThroat?</h1>
+    </div>
+  <!-- Content section: Introduces the quiz, provides instructions to the user, and includes a styled button that links to the first question (#one). -->
+    <div id="content" class="w3-container">
+        <p>Answer 6 questions to find out if you have a StrepThroat or SoreThroat!</p>
+        <a href="#one" class="w3-btn w3-grey w3-round">Get Started</a>
+    </div>
+<!-- Question 1 page: 
+     Displays the first question of the quiz.
+     If the user selects "Yes", StrepthroatAdd() increases the strep score by 1.
+     If the user selects "No", SorethroatAdd() increases the sore throat score by 1.
+     Both buttons navigate to the next question (#two). -->
+<div class="page" id="one">
+        <div class="w3-container w3-flat-carrot"><h1>Question 1</h1></div>
+        <div class="w3-container">
+<!-- Strepthroat symptom is usually onset-->
+            <p>Did you wake up with severe throat pain?</p>
+            <a href="#two" onclick="StrepthroatAdd();" class="w3-btn w3-black">Yes</a>
+            <a href="#two" onclick="SorethroatAdd();" class="w3-btn w3-black">No</a>
+        </div>
+<!--Displays the Second question of the quiz.-->
+<div class="page" id="Two">
+        <div class="w3-container w3-flat-carrot"><h1>Question 2</h1></div>
+        <div class="w3-container">
+<!-- white patches and pus is a sign of bacterial Infection, pointing to Strepthroat-->
+            <p>Do you see white patches or pus on your tonsils?</p>
+            <a href="#three" onclick="StrepthroatAdd();" class="w3-btn w3-black">Yes</a>
+            <a href="#three" onclick="SorethroatAdd();" class="w3-btn w3-black">No</a>
+        </div>
+<div class="page" id="Three">
+        <div class="w3-container w3-flat-carrot"><h1>Question 3</h1></div>
+        <div class="w3-container">
+<!-- bacterial Infection is often acommpany by fever, pointing to Strepthroat-->
+            <p>Do you have a fever above 101°F (38.3°C)?</p>
+            <a href="#four" onclick="StrepthroatAdd();" class="w3-btn w3-black">Yes</a>
+            <a href="#four" onclick="SorethroatAdd();" class="w3-btn w3-black">No</a>
+        </div>
+<div class="page" id="Four">
+        <div class="w3-container w3-flat-carrot"><h1>Question 4</h1></div>
+        <div class="w3-container">
+<!-- A common cold sorethoat is often acommpany by cough-->
+            <p>Do you have a cough?</p>
+            <a href="#five" onclick="SorethroatAdd();" class="w3-btn w3-black">Yes</a>
+            <a href="#five" onclick="StrepthroatAdd();" class="w3-btn w3-black">No</a>
+        </div>
+<div class="page" id="Five">
+        <div class="w3-container w3-flat-carrot"><h1>Question 5</h1></div>
+        <div class="w3-container">
+<!-- Runny nose or Stuffy nose is a Viral idicator-->
+            <p>Do you have a runny or stuffy nose?</p>
+            <a href="#six" onclick="SorethroatAdd();" class="w3-btn w3-black">Yes</a>
+            <a href="#Six" onclick="StrepthroatAdd();" class="w3-btn w3-black">No</a>
+        </div>
+<div class="page" id="Six">
+        <div class="w3-container w3-flat-carrot"><h1>Question 6</h1></div>
+        <div class="w3-container">
+<!-- Raspy Voice Often accompanies viral pharyngitis-->
+            <p>Is your voice hoarse or raspy?</p>
+            <a href="#result_page" onclick="SorethroatAdd();" class="w3-btn w3-black">Yes</a>
+            <a href="#result_page" onclick="StrepthroatAdd();" class="w3-btn w3-black">No</a>
+        </div>
+<!-- Displays the final results of the quiz.
+     When the "View Results" button is clicked, the getResults() function
+     calculates the scores and displays the diagnosis inside the paragraph
+     with id="results".-->
+<div class="page" id="results_page">
+        <div class="w3-container w3-flat-carrot"><h1>Results</h1></div>
+        <div class="w3-container">
+            <a onclick="getResults();" class="w3-btn w3-black">View Results</a>
+            <p id="results"></p> </div>
+    </div>
+<--!--RESULTS PAGE
+This page section that remains hidden
+until the URL fragment matches #results_page.
+
+The button does not navigate.
+Instead, it runs getResults(), which:
+1. Calculates percentages
+2. Updates the paragraph with id="results"
+3. Displays the probability values to the user
+This div has class="page" and id="results_page".
+Because all page elements are positioned off-screen by default,
+this page remains hidden until the URL fragment changes to 
+#results_page.
+When a user clicks the final question button (href="#results_page"),
+it activates and moves this page into view.
+
+How Results Are Calculated:
+The "View My Results" button runs the JavaScript function getResults().
+
+That function:
+1. Reads the allergy_count and cold_count variables.
+2. Converts them into percentages based on six total questions.
+3. Uses document.getElementById("results").
+4. Updates the innerHTML of the paragraph below.-->
+<div class="page" id="results_page">
+
+    <div class="w3-container w3-flat-carrot">
+        <h1>Analysis Results</h1>
+    </div>
+
+    <div class="w3-container">
+        <a onclick="getResults();" class="w3-btn w3-black">
+            View My Results
+        </a>
+
+        <p id="results"></p>
+    </div>
+
