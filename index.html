@@ -37,7 +37,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	<link rel="stylesheet" href="w3.css">
 	<link rel="stylesheet" href="w3-colors-flat.css">
       <!-- This CSS controls how pages behave and slide -->
-<style>	
+  <style>	
 .body {
      margin: 0em;
 }
@@ -61,25 +61,26 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
 <script>
 
-// The initial variables start at zero. They act as counters to track how many user responses align with each condition
+   // The initial variables start at zero. They act as counters to track how many user responses align with each condition
      var strepthroat_count = 0; 
      var Sorethroat_count = 0;
-// When a user clicks a button indicating an Strepthroat symptom. It increases the strepthroat_count variable by one.
+ // When a user clicks a button indicating an Strepthroat symptom. It increases the strepthroat_count variable by one.
      function StrepthroatAdd() {
-        strepthroat_count = strepthroat_count + 1;
+        strepthroat_count = strepthroat_count + 1; // Adds 1 to allergy count when called
+        }
 // This is called for Viral Sorethroat symptoms, adding one to the Sorethroat_count.
      function SorethroatAdd() {
-        Sorethroat_count = Sorethroat_count + 1;
+        Sorethroat_count = Sorethroat_count + 1;  // Adds 1 to cold count when called
     }
-// This function calculates the final diagnostic probabilities. It uses the 'innerHTML' property to update the results page
+ // This function calculates the final diagnostic probabilities. It uses the 'innerHTML' property to update the results page
       function getResults() {
-// We divide by 6 because we have 6 questions.
-        var totalQuestions = 6;
+ // We divide by 6 because we have 6 questions.
+        var totalQuestions = 6; // Total number of questions asked
         var total = strepthroat_count + Sorethroat_count;
-// Calculate percentages
+ // Calculate percentages
         var StrepthroatPercent = (strepthroat_count / 6) * 100;
         var SorethroatPercent = (Sorethroat_count / 6) * 100;
-// Display the results using (+)  to combine the text with the calculated variables. <br> creates a line break.
+ // Display the results using (+)  to combine the text with the calculated variables. <br> creates a line break.
       resultText.innerHTML = "Probability it is Bacterial Strepthroat = " + StrepthroatPercent + "%" + 
                             "<br> Probability it is a Viral Sorethroat = " + SorethroatPercent + "%";
 }
@@ -95,14 +96,17 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
   <!-- Content section: Introduces the quiz, provides instructions to the user, and includes a styled button that links to the first question (#one). -->
     <div id="content" class="w3-container">
         <p>Answer 6 questions to find out if you have a StrepThroat or SoreThroat!</p>
-        <a href="#one" class="w3-btn w3-grey w3-round">Get Started</a>
+        <a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
+	    <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+ 	
+	    <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
     </div>
 <!-- Question 1 page: 
      Displays the first question of the quiz.
      If the user selects "Yes", StrepthroatAdd() increases the strep score by 1.
      If the user selects "No", SorethroatAdd() increases the sore throat score by 1.
      Both buttons navigate to the next question (#two). -->
-     <div class="page" id="one">
+<div class="page" id="one">
 	<div id="header" class="w3-container w3-flat-carrot">
 			<h1>Question 1</h1>
 		</div>
