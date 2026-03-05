@@ -125,7 +125,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	</div>
 
 <!--Displays the Second question of the quiz.-->
-<!-- The id="two" allows navigation via href="#two". -->
+<!-- The id="two" allows navigation via href to two. -->
 <div class="page" id="two">
           <div id="header" class="w3-container w3-flat-carrot">
 			<h1>Question 2</h1>
@@ -133,10 +133,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     <div id="content" class="w3-container">
 <!-- white patches and pus is a sign of bacterial Infection, pointing to Strepthroat-->
             <p>Do you see white patches or pus on your tonsils?</p>
-		<!-- Both buttons link to #three, moving the user forward.
-The onclick function updates symptom counters before navigation.
-"Yes" adds to Strepthroat.
-"No" adds to Sorethroat. -->
+		<!-- Both buttons link to #three, moving the user forward. The onclick function updates symptom counters before navigation."Yes" adds to Strepthroat."No" adds to Sorethroat-->
         
             <a href="#three" onclick="StrepthroatAdd();" class="w3-btn w3-black">Yes</a>
             <a href="#three" onclick="SorethroatAdd();" class="w3-btn w3-black">No</a>
@@ -171,33 +168,37 @@ The onclick function updates symptom counters before navigation.
 	
 <div class="page" id="five">
 		<div id="header" class="w3-container w3-flat-carrot">
-        <h1>Question 5</h1>
+       <h1>Question 5</h1>
 	</div>
-<div id="content" class="w3-container">
-	<!-- Runny nose or Stuffy nose is a Viral idicator-->
-            <p>Do you have a runny or stuffy nose?</p>
-            <a href="#six" onclick="SorethroatAdd();" class="w3-btn w3-black">Yes</a>
-            <a href="#six" onclick="StrepthroatAdd();" class="w3-btn w3-black">No</a>
-        </div>
-	 </div>
+	<div id="content" class="w3-container">
+		<!-- Runny nose or Stuffy nose is a Viral idicator-->
 
-<div class="page" id="six">
-          <div id="header" class="w3-container w3-flat-carrot"> 
-          <h1>Question 6</h1>
-		</div>
+            <p>Do you have a runny or stuffy nose?</p>
+		<a href="#six" onclick="SorethroatAdd();" class="w3-btn w3-green">Yes</a>
+        <a href="#six" onclick="StrepthroatAdd();" class="w3-btn w3-red">No</a>
+	 </div><!-- /content -->
+   </div>
+		<!--NEW COLD QUESTION-->
+	<div class="page" id="six">
+		<!-- 
+HEADER SECTION This section displays the title banner at the top of the screen. The W3 CSS classes are used for styling (color and spacing).
+-->
+          <div id="header" class="w3-container w3-flat-carrot">
+       <h1>Question 6</h1>
+  </div>
 	<div id="content" class="w3-container">
 <!-- Raspy Voice Often accompanies viral pharyngitis-->
-            <p>Is your voice hoarse or raspy?</p>
-            <a href="#result_page" onclick="SorethroatAdd();" class="w3-btn w3-black">Yes</a>
-            <a href="#result_page" onclick="StrepthroatAdd();" class="w3-btn w3-black">No</a>
-        </div>
-	</div>
+    <p>Is your voice hoarse or raspy?</p>
+    <a href="#results_page" onclick="SorethroatAdd();" class="w3-btn w3-green">Yes</a>
+    <a href="#results_page" onclick="StrepthroatAdd();" class="w3-btn w3-red">No</a>	
+ </div><!-- /content -->
+</div>
 
 <!-- Displays the final results of the quiz.
      When the "View Results" button is clicked, the getResults() function
      calculates the scores and displays the diagnosis inside the paragraph
      with id="results".-->
-	<--!--RESULTS PAGE
+	<!--RESULTS PAGE
 This page section that remains hidden
 until the URL fragment matches #results_page.
 
@@ -221,8 +222,7 @@ That function:
 1. Reads the allergy_count and cold_count variables.
 2. Converts them into percentages based on six total questions.
 3. Uses document.getElementById("results").
-4. Updates the innerHTML of the paragraph below.
--->
+4. Updates the innerHTML of the paragraph below.-->
 <div class="page" id="results_page">
         <div class="w3-container w3-flat-carrot">
 			<h1>Analysis Results</h1>
